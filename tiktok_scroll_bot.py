@@ -2,7 +2,6 @@ from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
-from selenium.common.exceptions import NoSuchCookieException, NoSuchElementException
 from getpass import getpass
 from time import sleep
 
@@ -39,24 +38,21 @@ class tiktokscroll_bot:
             login = self.chrome.find_element_by_id('loginbutton')
             login.click()
             sleep(3)
+            
+        print("Logged in successfully")
         
         self.chrome.switch_to.window(tiktok_window)
         
     def scroll(self) -> None:
         video = self.chrome.find_element_by_tag_name('video')
         video.click()
-        # sleep(20) # Do the captcha
-        # while True:
-        #     duration = self.chrome.execute_script("return document.getElementsByTagName('video')[0].duration")
-        #     print(duration)
-        for _ in range(5):
+        while True:
             duration = self.chrome.execute_script("return document.getElementsByTagName('video')[0].duration")
             sleep(int(duration) + 1)
             self.ac.send_keys(Keys.ARROW_DOWN).perform()
-        # print(video)
-        # print(len(video))
-        # video.click()
-        
+            sleep(1)
+            self.ac.reset_actions()
+            sleep(1)
         
 if __name__ == '__main__':
     # email = input("Please enter your facebook email: ")
