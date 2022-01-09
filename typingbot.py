@@ -18,7 +18,8 @@ def get_text(chrome):
     return text
 
 if __name__ == "__main__":
-    chrome = webdriver.Chrome('/usr/bin/chromedriver')
+    # chrome = webdriver.Chrome('/usr/bin/chromedriver')
+    chrome = webdriver.Chrome('chromedriver.exe')
     chrome.get('https://thetypingcat.com/typing-speed-test/1m')
 
     sleep(5)
