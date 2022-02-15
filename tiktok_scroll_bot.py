@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.chrome import service
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By 
@@ -11,14 +12,14 @@ class tiktokscroll_bot:
     
     def __init__(self, email) -> None:
         # For running on windows
-        # s = Service('c:\projects\selenium-projects\chromedriver.exe')
+        s = Service('c:\projects\selenium-projects\chromedriver.exe')
         # For running on linux
         # s = Service('usr/bin/chromedriver')
         self.facebook_email = email
         self.options = Options()
         self.options.add_argument("--start-maximized")
         self.options.add_argument("--disable-notifications")
-        self.chrome = webdriver.Chrome(options=self.options)
+        self.chrome = webdriver.Chrome(service=s, options=self.options)
         self.ac = ActionChains(self.chrome)
         
     def login(self) -> None:
