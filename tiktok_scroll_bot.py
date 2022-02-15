@@ -13,12 +13,12 @@ class tiktokscroll_bot:
         # For running on windows
         # s = Service('c:\projects\selenium-projects\chromedriver.exe')
         # For running on linux
-        s = Service('usr/bin/chromedriver')
+        # s = Service('usr/bin/chromedriver')
         self.facebook_email = email
         self.options = Options()
         self.options.add_argument("--start-maximized")
         self.options.add_argument("--disable-notifications")
-        self.chrome = webdriver.Chrome(service=s, options=self.options)
+        self.chrome = webdriver.Chrome(options=self.options)
         self.ac = ActionChains(self.chrome)
         
     def login(self) -> None:
